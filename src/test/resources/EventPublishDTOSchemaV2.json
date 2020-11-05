@@ -1,0 +1,980 @@
+{
+  "$id": "https://example.com/EventPublishDTO.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "payload": {
+      "title": "com.walmart.services.order.common.model.Order",
+      "type": "object",
+      "required": [
+        "orderCustomAttributes",
+        "orderNo"
+      ],
+      "properties": {
+        "orderCustomAttributes": {
+          "required": ["OMSProgId","TcNo","expoExperimentId"],
+          "title": "Map<String,String>",
+          "type": "object",
+          "properties": {
+            "expoExperimentId": {
+              "type": "string"
+            },
+            "TcNo": {
+              "type": "string"
+            },
+            "OMSProgId": {
+              "type": "string"
+            }
+          }
+        },
+        "orderNo": {
+          "type": "string"
+        },
+        "martId": {
+          "type": "string"
+        },
+        "holds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "holdStatus": {
+                "type": "string",
+                "enum": [
+                  "ONHOLD",
+                  "RELEASED"
+                ]
+              }
+            }
+          }
+        },
+        "orderLines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lineId": {
+                "type": "string"
+              },
+              "verticalId": {
+                "type": "string"
+              },
+              "holds": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "holdStatus": {
+                      "type": "string",
+                      "enum": [
+                        "ONHOLD",
+                        "RELEASED"
+                      ]
+                    }
+                  }
+                }
+              },
+              "fulfillmentPath": {
+                "type": "object",
+                "required": [
+                  "accessMode",
+                  "accessType",
+                  "nodeType"
+                ],
+                "properties": {
+                  "accessMode": {
+                    "type": "string"
+                  },
+                  "nodeType": {
+                    "type": "string"
+                  },
+                  "accessType": {
+                    "type": "string"
+                  },
+                  "fulfillmentType": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "primeLineNo": {
+                "type": "integer"
+              },
+              "orderProduct": {
+                "type": "object",
+                "properties": {
+                  "offerId": {
+                    "type": "object",
+                    "properties": {
+                      "offerId": {
+                        "type": "string"
+                      },
+                      "legacyItemId": {
+                        "type": "string"
+                      },
+                      "USSellerId": {
+                        "type": "number"
+                      },
+                      "upc": {
+                        "type": "string"
+                      },
+                      "alternateWupcs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "gtin": {
+                        "type": "string"
+                      },
+                      "wupc": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "productName": {
+                    "type": "string"
+                  },
+                  "offerAttributes": {
+                    "type": "object",
+                    "properties": {
+                      "winNo": {
+                        "type": "string"
+                      },
+                      "snapEligible": {
+                        "type": "boolean"
+                      },
+                      "isPerishable": {
+                        "type": "boolean"
+                      },
+                      "offerType": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "offerLogistics": {
+                    "type": "object",
+                    "properties": {
+                      "itemImageURL": {
+                        "type": "string"
+                      },
+                      "commodityCode": {
+                        "type": "string"
+                      },
+                      "cin": {
+                        "type": "string"
+                      },
+                      "associatedGTIN": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "productMeasurements": {
+                        "type": "object",
+                        "properties": {
+                          "weight": {
+                            "$ref": "#/definitions/measurement"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "deliveryReservationDetails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dispenseType": {
+                      "type": "string"
+                    },
+                    "serviceType": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "charges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "chargeCategory": {
+                      "$ref": "#/definitions/chargeCategory"
+                    },
+                    "chargeName": {
+                      "type": "string"
+                    },
+                    "chargePerUnit": {
+                      "type": "object",
+                      "properties": {
+                        "chargePerUnit": {
+                          "$ref": "#/definitions/moneyType"
+                        },
+                        "chargeQty": {
+                          "$ref": "#/definitions/measurement"
+                        },
+                        "fractionCharge": {
+                          "$ref": "#/definitions/moneyType"
+                        }
+                      }
+                    },
+                    "isDiscount": {
+                      "type": "boolean"
+                    },
+                    "isBillable": {
+                      "type": "boolean"
+                    },
+                    "taxes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "taxPercentage": {
+                            "type": "string"
+                          },
+                          "taxPerUnit": {
+                            "$ref": "#/definitions/moneyType"
+                          },
+                          "taxPerLine": {
+                            "$ref": "#/definitions/moneyType"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "customerPreferences": {
+                "type": "object",
+                "properties": {
+                  "isSubstitutable": {
+                    "type": "boolean"
+                  },
+                  "preferredItemQty": {
+                    "$ref": "#/definitions/measurement"
+                  }
+                }
+              },
+              "shipToAddress": {
+                "$ref": "#/definitions/contactInfo"
+              },
+              "orderedLineDates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dateTypeId": {
+                      "type": "string",
+                      "enum": [
+                        "SHIPMENT",
+                        "DELIVERY",
+                        "CANCEL",
+                        "SCHEDULE",
+                        "STREET",
+                        "OPD",
+                        "RETURN",
+                        "PICKUP_BY",
+                        "STATUS_CHANGE",
+                        "PO_CREATE",
+                        "CONFIRM_BY",
+                        "PICKUP_TOGETHER",
+                        "EXPIRATION",
+                        "PICK_COMPLETE",
+                        "AMEND_CUTOFF"
+                      ]
+                    },
+                    "expectedDate": {
+                      "type": "object"
+                    },
+                    "requestedDate": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "orderLineCustomAttributes": {
+                "type": "object",
+                "properties": {
+                  "forceCarrierMethodID": {
+                    "type": "string"
+                  },
+                  "forceShipNode": {
+                    "type": "string"
+                  },
+                  "ExtnOrderLineType": {
+                    "type": "string"
+                  },
+                  "isUnScheduled": {
+                    "type": "string"
+                  },
+                  "salesUOM": {
+                    "type": "string"
+                  }
+                }
+              },
+              "giftMessage": {
+                "type": "object",
+                "properties": {
+                  "giftMessage": {
+                    "type": "string"
+                  },
+                  "recipientName": {
+                    "type": "string"
+                  },
+                  "senderName": {
+                    "type": "string"
+                  }
+                }
+              },
+              "isPreOrder": {
+                "type": "boolean"
+              },
+              "shippingMethod": {
+                "type": "string",
+                "enum": [
+                  "VALUE",
+                  "STANDARD",
+                  "EXPEDITED",
+                  "SHIPPING_PASS",
+                  "RUSH",
+                  "ECONOMY_STORE_DELIVERY",
+                  "STORE_DELIVERY",
+                  "ONE_DAY",
+                  "FREIGHT",
+                  "ONE_HOUR_PHOTOS_STORE_PICKUP",
+                  "ELECTRONIC_DELIVERY",
+                  "MIXED_DELIVERY",
+                  "PICKUP_TODAY",
+                  "PHOTO_SAME_DAY_PICKUP",
+                  "PHOTO_ONE_HOUR_PICKUP",
+                  "FEDEX_DELIVERY",
+                  "FREIGHT_WITH_WHITE_GLOVE",
+                  "NAMED_DAY",
+                  "INTERNATIONAL",
+                  "SAME_DAY",
+                  "EXPRESS",
+                  "FREIGHT_EXPEDITED",
+                  "PREMIUM"
+                ]
+              },
+              "slaTier": {
+                "type": "string"
+              },
+              "shippingTier": {
+                "type": "string"
+              },
+              "shipTogetherid": {
+                "type": "string"
+              },
+              "isAgeVerificationRequired": {
+                "type": "boolean"
+              },
+              "extrinsicList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "instructions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/instruction"
+                }
+              }
+            }
+          }
+        },
+        "orderLineRelationships": {
+          "type": "object",
+          "properties": {
+            "serviceRelationships": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "relationShipType": {
+                    "type": "string"
+                  },
+                  "productLine": {
+                    "type": "object",
+                    "properties": {
+                      "productLinNo": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "serviceLine": {
+                    "type": "object",
+                    "properties": {
+                      "serviceLineNo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "bundleRelationships": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "orderLines": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "bundleGroupId": {
+                    "type": "string"
+                  },
+                  "bundleType": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "warrantyRelationships": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "productLine": {
+                    "type": "object",
+                    "properties": {
+                      "productLine": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "warrantyLine": {
+                    "type": "object",
+                    "properties": {
+                      "warrantyLineNo": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deliveryReservationDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fulfillmentLocationId": {
+                "type": "string"
+              },
+              "orderLineRelations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "contractId": {
+          "type": "string"
+        },
+        "buyerInfo": {
+          "type": "object",
+          "properties": {
+            "primaryContact": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "object",
+                  "properties": {
+                    "emailAddress": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "phone": {
+                  "type": "object",
+                  "properties": {
+                    "completeNumber": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "verticalId": {
+          "type": "string"
+        },
+        "orderDate": {
+          "type": "number"
+        },
+        "paymentMethods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "personInfoBillTo": {
+                "$ref": "#/definitions/contactInfo"
+              },
+              "pmId": {
+                "type": "string"
+              },
+              "last4DigitsOfCard": {
+                "type": "string"
+              },
+              "paymentType": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pickupPersons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "contactInfo": {
+                "$ref": "#/definitions/contactInfo"
+              },
+              "isPrimary": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "paymentStatus": {
+          "type": "string",
+          "enum": [
+            "PAID",
+            "AUTHORIZED",
+            "NOT_APPLICABLE",
+            "AWAIT_AUTH",
+            "FAILED_AUTH",
+            "AWAIT_PAYMENT",
+            "REFUND_DUE",
+            "AWAIT_PAY_INFO"
+          ]
+        },
+        "originInfo": {
+          "type": "object",
+          "properties": {
+            "segment": {
+              "type": "string"
+            }
+          }
+        },
+        "groupInfo": {
+          "type": "object",
+          "properties": {
+            "lineIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/instruction"
+          }
+        },
+        "orderTotals": {
+          "type": "object",
+          "properties": {
+            "grandTotal": {
+              "$ref": "#/definitions/moneyType"
+            },
+            "promotionTotal": {
+              "$ref": "#/definitions/moneyType"
+            }
+          }
+        },
+        "orderSummary": {
+          "type": "object",
+          "properties": {
+            "subTotals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "subTotalType": {
+                    "$ref": "#/definitions/chargeCategory"
+                  },
+                  "totalAmount": {
+                    "$ref": "#/definitions/moneyType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "header": {
+      "type": "object"
+    }
+  },
+  "definitions": {
+    "moneyType": {
+      "title": "MoneyType",
+      "type": "object",
+      "properties": {
+        "currencyAmount": {
+          "type": "string"
+        },
+        "currencyUnit": {
+          "type": "string",
+          "enum": [
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHF",
+            "CLP",
+            "CNY",
+            "COP",
+            "CRC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LVL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RUR",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "STD",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "UYU",
+            "UZS",
+            "VEF",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XFU",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XTS",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMK",
+            "ZWL"
+          ]
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "properties": {
+        "measurementValue": {
+          "type": "string"
+        },
+        "unitOfMeasure": {
+          "type": "string"
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressType": {
+          "type": "object"
+        },
+        "apoFpo": {
+          "type": "boolean"
+        },
+        "poBox": {
+          "type": "boolean"
+        },
+        "city": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "addressLineOne": {
+          "type": "string"
+        },
+        "addressLineTwo": {
+          "type": "string"
+        },
+        "addressLineThree": {
+          "type": "string"
+        },
+        "stateOrProvinceCode": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      }
+    },
+    "contactInfo": {
+      "type": "object",
+      "properties": {
+        "storeFrontId": {
+          "type": "object",
+          "properties": {
+            "storeFrontId": {
+              "type": "object",
+              "properties": {
+                "frontId": {
+                  "type": "string"
+                },
+                "storeId": {
+                  "type": "string"
+                },
+                "storeTypeId": {
+                  "type": "integer"
+                },
+                "USStoreId": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/address"
+        },
+        "email": {
+          "type": "object",
+          "properties": {
+            "emailAddress": {
+              "type": "string"
+            }
+          }
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            }
+          }
+        },
+        "phone": {
+          "type": "object",
+          "properties": {
+            "completeNumber": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "instruction": {
+      "type": "object",
+      "properties": {
+        "instructionText": {
+          "type": "string"
+        },
+        "instructionType": {
+          "type": "string",
+          "enum": [
+            "DELIVERY",
+            "GIFTWRAP",
+            "PACKAGING",
+            "GIFTMSG",
+            "DRIVER"
+          ]
+        },
+        "instructionSubType": {
+          "type": "string"
+        }
+      }
+    },
+    "chargeCategory": {
+      "type": "string",
+      "enum": [
+        "PRODUCT",
+        "SHIPPING",
+        "DISCOUNT",
+        "TAX",
+        "MISC",
+        "FEE",
+        "VAS",
+        "BENEFITS_PROG_AMT",
+        "ADDITIONAL_HOLD_AMT",
+        "DRIVER_TIP",
+        "EXPRESS_FEE",
+        "DELIV_SLOT",
+        "HANDLING",
+        "MISC_NON_BILLABLE"
+      ]
+    }
+  }
+}

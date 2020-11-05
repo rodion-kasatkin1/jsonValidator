@@ -1,0 +1,562 @@
+{
+  "$id": "https://example.com/FulfillmentOrderRequestSchema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "buId": {
+      "type": "string"
+    },
+    "martId": {
+      "type": "string"
+    },
+    "sellerId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "purchaseContractId": {
+      "type": "string"
+    },
+    "subsidiaryId": {
+      "type": "string"
+    },
+    "customerOrderId": {
+      "type": "string"
+    },
+    "orderChannelId": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "string"
+    },
+    "verticalId": {
+      "type": "string"
+    },
+    "sellerOrderId": {
+      "type": "string"
+    },
+    "orderPlacedTimestamp": {
+      "type": "number"
+    },
+    "tcNumber": {
+      "type": "string"
+    },
+    "needsConfirmation": {
+      "type": "boolean"
+    },
+    "partialFulfillments": {
+      "type": "string"
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "contact": {
+          "$ref": "#/definitions/contact"
+        }
+      }
+    },
+    "paymentDetails": {
+      "type": "array",
+      "items": {
+        "paymentType": {
+          "type": "string"
+        },
+        "cardType": {
+          "type": "string"
+        },
+        "last4": {
+          "type": "string"
+        },
+        "billTo": {
+          "$ref": "#/definitions/contact"
+        },
+        "billingAddress": {
+          "$ref": "#/definitions/address"
+        },
+        "voucherReference1": {
+          "type": "string"
+        },
+        "voucherReference2": {
+          "type": "string"
+        }
+      }
+    },
+    "pickupPersonDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contact": {
+            "$ref": "#/definitions/contact"
+          },
+          "address": {
+            "$ref": "#/definitions/address"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "expoExperimentId": {
+      "type": "string"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "orderItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sellerLineId": {
+            "type": "string"
+          },
+          "itemDetail": {
+            "type": "object",
+            "properties": {
+              "itemId": {
+                "type": "string"
+              },
+              "sellerId": {
+                "type": "string"
+              },
+              "legacySellerId": {
+                "type": "string"
+              },
+              "upc": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "gtin": {
+                "type": "string"
+              },
+              "pebGtin": {
+                "type": "string"
+              },
+              "offerId": {
+                "type": "string"
+              },
+              "wupc": {
+                "type": "string"
+              },
+              "sku": {
+                "type": "string"
+              },
+              "itemClass": {
+                "type": "string"
+              },
+              "win": {
+                "type": "string"
+              },
+              "imageUrl": {
+                "type": "string"
+              },
+              "commodityCode": {
+                "type": "string"
+              },
+              "cin": {
+                "type": "string"
+              },
+              "alternateUPCs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "alternateGTINs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "isIsbn": {
+                "type": "boolean"
+              }
+            }
+          },
+          "addOnServices": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "serviceType": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "chargeDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "chargeCategory": {
+                  "$ref": "#/definitions/chargeCategory"
+                },
+                "chargeName": {
+                  "type": "string"
+                },
+                "chargePerUnit": {
+                  "$ref": "#/definitions/moneyType"
+                },
+                "chargePerLine": {
+                  "$ref": "#/definitions/moneyType"
+                },
+                "taxDetails": {
+                  "type": "object",
+                  "properties": {
+                    "taxPerUnit": {
+                      "$ref": "#/definitions/moneyType"
+                    },
+                    "taxPerLine": {
+                      "$ref": "#/definitions/moneyType"
+                    },
+                    "taxPercentage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "isDiscount": {
+                  "type": "boolean"
+                },
+                "isBillable": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "accessMode": {
+            "type": "string"
+          },
+          "nodeType": {
+            "type": "string"
+          },
+          "accessType": {
+            "type": "string"
+          },
+          "fulfillmentType": {
+            "type": "string"
+          },
+          "isSubstitutable": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "orderLineRelations": {
+      "type": "object"
+    },
+    "deliveryReservationDetails": {
+      "type": "array"
+    },
+    "instructions": {
+      "type": "array"
+    },
+    "orderTotals": {
+      "type": "array"
+    },
+    "segment": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "buId",
+    "martId",
+    "sellerId",
+    "version",
+    "purchaseContractId",
+    "subsidiaryId",
+    "customerOrderId",
+    "orderChannelId",
+    "paymentStatus",
+    "verticalId",
+    "sellerOrderId",
+    "orderPlacedTimestamp",
+    "tcNumber",
+    "needsConfirmation",
+    "partialFulfillments",
+    "customer",
+    "paymentDetails",
+    "pickupPersonDetails",
+    "expoExperimentId",
+    "requestId",
+    "orderItems",
+    "orderLineRelations",
+    "deliveryReservationDetails",
+    "instructions",
+    "orderTotals",
+    "segment"
+  ],
+  "definitions": {
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            }
+          }
+        },
+        "hone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "addressType": {
+          "type": "object"
+        },
+        "apoFpo": {
+          "type": "boolean"
+        },
+        "poBox": {
+          "type": "boolean"
+        },
+        "city": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "addressLineOne": {
+          "type": "string"
+        },
+        "addressLineTwo": {
+          "type": "string"
+        },
+        "addressLineThree": {
+          "type": "string"
+        },
+        "stateOrProvinceCode": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      }
+    },
+    "chargeCategory": {
+      "type": "string",
+      "enum": [
+        "PRODUCT",
+        "SHIPPING",
+        "DISCOUNT",
+        "TAX",
+        "MISC",
+        "FEE",
+        "VAS",
+        "BENEFITS_PROG_AMT",
+        "ADDITIONAL_HOLD_AMT",
+        "DRIVER_TIP",
+        "EXPRESS_FEE",
+        "DELIV_SLOT",
+        "HANDLING",
+        "MISC_NON_BILLABLE"
+      ]
+    },
+    "moneyType": {
+      "$id": "MoneyType",
+      "title": "MoneyType",
+      "type": "object",
+      "properties": {
+        "currencyAmount": {
+          "type": "string"
+        },
+        "currencyUnit": {
+          "type": "string",
+          "enum": [
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHF",
+            "CLP",
+            "CNY",
+            "COP",
+            "CRC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LVL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RUR",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "STD",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "UYU",
+            "UZS",
+            "VEF",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XFU",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XTS",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMK",
+            "ZWL"
+          ]
+        }
+      }
+    }
+  }
+}

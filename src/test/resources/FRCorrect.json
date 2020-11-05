@@ -1,0 +1,31 @@
+{
+
+    "buId":"someString",
+    "martId":"someString",
+    "sellerId":"someString",
+    "version":"someString",
+    "purchaseContractId":"someString",
+    "subsidiaryId":"someString",
+    "customerOrderId":"someString",
+    "orderChannelId":"someString",
+    "paymentStatus":"someString",
+    "verticalId":"someString",
+    "sellerOrderId":"someString",
+
+    "orderPlacedTimestamp":{},
+
+    "tcNumber":"someString",
+    "needsConfirmation":true,
+    "partialFulfillments":"someString",
+    "customer":{},
+    "paymentDetails":[] ,
+    "pickupPersonDetails":[],
+    "expoExperimentId":"someString",
+    "requestId":"someString",
+    "orderItems":[],
+    "orderLineRelations":{},
+    "deliveryReservationDetails":[],
+    "instructions":[],
+    "orderTotals":[],
+    "segment":"someString"
+}

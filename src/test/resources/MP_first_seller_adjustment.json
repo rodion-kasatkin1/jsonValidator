@@ -1,0 +1,95 @@
+{
+  "payload": {
+    "order": {
+      "orderNo": "4852056872501",
+      "transactionId": "jadsvkjlasdjf",
+      "purchaseOrders": [
+        {
+          "purchaseOrderNo": "2571840154004",
+          "purchaseOrderLines": [
+            {
+              "primeLineNo": "1",
+              "fulfillerLineId": "1",
+              "charges": [
+                {
+                  "relatedUnitTransactionId": "",
+                  "chargeCategory": "PRODUCT",
+                  "chargeName": "Product",
+                  "reasonCode": "178",
+                  "chargeQuantity": {
+                    "unitOfMeasure": "EA",
+                    "measurementValue": 1
+                  },
+                  "chargePerUnit": {
+                    "currencyAmount": 2.5,
+                    "currencyUnit": "USD"
+                  },
+                  "excessCharge": {
+                    "currencyAmount": 0,
+                    "currencyUnit": "USD"
+                  },
+                  "isDiscount": true,
+                  "reasonDescription": "this is a test",
+                  "transactionDate": "2020-09-24T20:56:01.000+0000",
+                  "applyToStatusQty": "NOT_SHIPPED"
+                }
+              ],
+              "notes": [
+                {
+                  "contactReference": "Joe",
+                  "contactType": "contract",
+                  "noteText": "General adjustment",
+                  "reasonCode": "178",
+                  "enteredBy": "Tom",
+                  "reasonDescription": "test for reason description",
+                  "noteType": "test for note type"
+                }
+              ]
+            }
+          ],
+          "purchaseOrderLines": [
+            {
+              "primeLineNo": "1",
+              "fulfillerLineId": "2",
+              "charges": [
+                {
+                  "relatedUnitTransactionId": "",
+                  "chargeCategory": "PRODUCT",
+                  "chargeName": "Product",
+                  "reasonCode": "178",
+                  "chargeQuantity": {
+                    "unitOfMeasure": "EA",
+                    "measurementValue": 1
+                  },
+                  "chargePerUnit": {
+                    "currencyAmount": 2.5,
+                    "currencyUnit": "USD"
+                  },
+                  "excessCharge": {
+                    "currencyAmount": 0,
+                    "currencyUnit": "USD"
+                  },
+                  "isDiscount": true,
+                  "reasonDescription": "this is a test",
+                  "transactionDate": "2020-09-24T20:56:01.000+0000",
+                  "applyToStatusQty": "NOT_SHIPPED"
+                }
+              ],
+              "notes": [
+                {
+                  "contactReference": "Joe",
+                  "contactType": "contract",
+                  "noteText": "General adjustment",
+                  "reasonCode": "178",
+                  "enteredBy": "Tom",
+                  "reasonDescription": "test for reason description",
+                  "noteType": "test for note type"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

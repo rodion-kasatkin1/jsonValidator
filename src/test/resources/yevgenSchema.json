@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/product.schema.json",
+  "title": "Seller Adjustment API",
+  "description": "Seller Adjustment API request",
+  "type": "object",
+  "properties": {
+    "payload": {
+      "description": "Request payload",
+      "type": "object",
+      "properties": {
+        "order": {
+          "description": "Order object",
+          "type": "object",
+          "properties": {
+            "orderNo": {
+              "type": "string"
+            },
+            "transactionId": {
+              "type": "string"
+            },
+            "purchaseOrders": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "purchaseOrderNo": {
+                    "type": "string"
+                  },
+                  "purchaseOrderLines": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "primeLineNo": {
+                          "type": "string"
+                        },
+                        "fulfillerLineId": {
+                          "type": "string"
+                        },
+                        "charges": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "relatedUnitTransactionId": {
+                                "type": "string"
+                              },
+                              "chargeCategory": {
+                                "type": "string"
+                              },
+                              "chargeName": {
+                                "type": "string"
+                              },
+                              "reasonCode": {
+                                "type": "string"
+                              },
+                              "chargeQuantity": {
+                                "type": "object",
+                                "properties": {
+                                  "unitOfMeasure": {
+                                    "type": "string"
+                                  },
+                                  "measurementValue": {
+                                    "type": "number"
+                                  },
+                                  "required": [
+                                    "measurementValue"
+                                  ]
+                                }
+                              },
+                              "chargePerUnit": {
+                                "type": "object",
+                                "properties": {
+                                  "currencyAmount": {
+                                    "type": "number"
+                                  },
+                                  "currencyUnit": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "currencyAmount"
+                                ]
+                              },
+                              "excessCharge": {
+                                "type": "object",
+                                "properties": {
+                                  "currencyAmount": {
+                                    "type": "number"
+                                  },
+                                  "currencyUnit": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "isDiscount": {
+                                "type": "boolean"
+                              },
+                              "reasonDescription": {
+                                "type": "string"
+                              },
+                              "transactionDate": {
+                                "type": "string",
+                                "pattern": "\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\.\\d\\d\\d[+-]\\d\\d\\d",
+                                "format": "date-time"
+                              },
+                              "applyToStatusQty": {
+                                "type": "string"
+                              },
+                              "required": [
+                                "chargeCategory",
+                                "chargeName",
+                                "applyToStatusQty",
+                                "reasonCode"
+                              ]
+                            }
+                          }
+                        },
+                        "notes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "contactReference": {
+                                "type": "string"
+                              },
+                              "contactType": {
+                                "type": "string"
+                              },
+                              "noteText": {
+                                "type": "string"
+                              },
+                              "reasonCode": {
+                                "type": "string"
+                              },
+                              "enteredBy": {
+                                "type": "string"
+                              },
+                              "reasonDescription": {
+                                "type": "string"
+                              },
+                              "noteType": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "primeLineNo",
+                          "fulfillerLineId"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "orderNo",
+              "transactionId"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
